@@ -16,8 +16,8 @@
 function makeNewPosition($container) {
 
     // Get viewport dimensions (remove the dimension of the div)
-    var h = $container.height() - 400;
-    var w = $container.width() - 400;
+    var h = $container.height() - 600;
+    var w = $container.width() - 600;
 
     var nh = Math.floor(Math.random() * h);
     var nw = Math.floor(Math.random() * w);
@@ -47,7 +47,7 @@ function calcSpeed(prev, next) {
 
     var greatest = x > y ? x : y;
 
-    var speedModifier = 0.7;
+    var speedModifier = 0.8;
 
     var speed = Math.ceil(greatest / speedModifier);
 
