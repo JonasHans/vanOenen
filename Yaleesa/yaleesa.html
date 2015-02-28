@@ -1,29 +1,158 @@
 <html>
 	<head>
 		<title>YALEESA</title>
-		<link rel="sylesheet" type="text/css" href="main.css" />
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	</head>
-	
-	<script>
-	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-	
-	  ga('create', 'UA-52459879-1', 'auto');
-	  ga('send', 'pageview');
-	
+
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+    animateDiv($('.a'));
+        animateDiv($('.b'));
+        animateDiv($('.c'));
+
+});
+
+function makeNewPosition($container) {
+
+    // Get viewport dimensions (remove the dimension of the div)
+    var h = $container.height() + 50;
+    var w = $container.width() + 50;
+
+    var nh = Math.floor(Math.random() * h);
+    var nw = Math.floor(Math.random() * w);
+
+    return [nh, nw];
+
+}
+
+function animateDiv($target) {
+    var newq = makeNewPosition($target.parent());
+    var oldq = $target.offset();
+    var speed = calcSpeed([oldq.top, oldq.left], newq);
+
+    $target.animate({
+        top: newq[0],
+        left: newq[1]
+    }, speed, function() {
+        animateDiv($target);
+    });
+
+};
+
+function calcSpeed(prev, next) {
+
+    var x = Math.abs(prev[1] - next[1]);
+    var y = Math.abs(prev[0] - next[0]);
+
+    var greatest = x > y ? x : y;
+
+    var speedModifier = 0.7;
+
+    var speed = Math.ceil(greatest / speedModifier);
+
+    return speed;
+
+}
 	</script>
 
+
+	<style type="text/css">
+		@-webkit-keyframes spinnerRotate
+		{
+		    from{-webkit-transform:rotate(0deg);}
+		    to{-webkit-transform:rotate(360deg);}
+		}
+		@-moz-keyframes spinnerRotate
+		{
+		    from{-moz-transform:rotate(0deg);}
+		    to{-moz-transform:rotate(360deg);}
+		}
+		@-ms-keyframes spinnerRotate
+		{
+		    from{-ms-transform:rotate(0deg);}
+		    to{-ms-transform:rotate(360deg);}
+		}
+		#spin{
+		    position:fixed;
+		    top:2%;
+		    left:0%;
+		    -webkit-animation-name: spinnerRotate;
+		    -webkit-animation-duration: 4s;
+		    -webkit-animation-iteration-count: infinite;
+		    -webkit-animation-timing-function: linear;
+		    -moz-animation-name: spinnerRotate;
+		    -moz-animation-duration: 4s;
+		    -moz-animation-iteration-count: infinite;
+		    -moz-animation-timing-function: linear;
+		    -ms-animation-name: spinnerRotate;
+		    -ms-animation-duration: 4s;
+		    -ms-animation-iteration-count: infinite;
+		    -ms-animation-timing-function: linear;
+		}
+		#spinFast{
+		    position:fixed;
+		    top:2%;
+		    left:0%;
+		    -webkit-animation-name: spinnerRotate;
+		    -webkit-animation-duration: 2s;
+		    -webkit-animation-iteration-count: infinite;
+		    -webkit-animation-timing-function: linear;
+		    -moz-animation-name: spinnerRotate;
+		    -moz-animation-duration: 2s;
+		    -moz-animation-iteration-count: infinite;
+		    -moz-animation-timing-function: linear;
+		    -ms-animation-name: spinnerRotate;
+		    -ms-animation-duration: 2s;
+		    -ms-animation-iteration-count: infinite;
+		    -ms-animation-timing-function: linear;
+		}
+
+		#flip {
+		    -webkit-transform: rotate(180deg);
+		    -moz-transform: rotate(180deg);
+		    -o-transform: rotate(180deg);
+		    -ms-transform: rotate(180deg);
+		    transform: rotate(180deg);
+		}
+	</style>
+
 	<body >
-		<div id="spin">
-			<img width='1000px' src="rainbow.gif"></br>
-			JE DENKT IS FISSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSA</br>
-			<img width='1000px' src="YaleesaFunTime.gif">
-			<audio controls autoplay>
-			  <source src="ROCKYABODY.mp3" type="audio/mpeg">
-			</audio>
-		</div>
+
+			<div id="spin" class="a">
+				<img width='1000px' src="rainbow.gif"></br>
+				JE DENKT IS FISSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSA</br>
+				<img width='1000px' src="YaleesaFunTime.gif">
+				</br>
+				JE DENKT IS FISSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSA</br>
+				<audio controls autoplay hidden>
+				  <source src="ROCKYABODY.mp3" type="audio/mpeg">
+				</audio>
+
+				<img id="flip" width='1000px' src="rainbow.gif"></br>
+			</div>
+		
+
+			<div  id="spinFast" class="b">
+				<img width='1000px' src="rainbow.gif"></br>
+				JE DENKT IS FISSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSA</br>
+				<img width='1000px' src="YaleesaFunTime.gif">
+				</br>
+				JE DENKT IS FISSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSA</br>
+
+				<img id="flip" width='1000px' src="rainbow.gif"></br>
+			</div>
+
+			<div id="spinFast" class="c">
+				<img width='1000px' src="rainbow.gif"></br>
+				JE DENKT IS FISSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSA</br>
+				<img width='1000px' src="YaleesaFunTime.gif">
+				</br>
+				JE DENKT IS FISSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSA</br>
+
+				<img id="flip" width='1000px' src="rainbow.gif"></br>
+			</div>
+		
 	</body>
 
 </html>
