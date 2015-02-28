@@ -16,8 +16,8 @@
 function makeNewPosition($container) {
 
     // Get viewport dimensions (remove the dimension of the div)
-    var h = $container.height() + 50;
-    var w = $container.width() + 50;
+    var h = $container.height() - 400;
+    var w = $container.width() - 400;
 
     var nh = Math.floor(Math.random() * h);
     var nw = Math.floor(Math.random() * w);
@@ -54,6 +54,34 @@ function calcSpeed(prev, next) {
     return speed;
 
 }
+
+var count = 0;
+var nextTime = false;
+setInterval(function(){  
+	if(count == 0){
+		document.getElementById("fissa").style.color = "#ff0000";
+		count++;
+		nextTime = true;
+	}
+	if(count == 1 && !nextTime){
+		document.getElementById("fissa").style.color = "magenta";
+		count++;
+		nextTime = true;
+	}
+	if(count == 2 && !nextTime){
+		document.getElementById("fissa").style.color = "blue";
+		count++;
+		nextTime = true;
+	}
+	if(count == 3 && !nextTime){
+		document.getElementById("fissa").style.color = "pink";
+		count = 0;
+		nextTime = true;
+	}
+	nextTime = false;
+    },500);
+
+
 	</script>
 
 
@@ -118,6 +146,8 @@ function calcSpeed(prev, next) {
 	</style>
 
 	<body >
+
+			<h1 id="fissa" style="font-size:180px; max-width:100%">JE DENKT IS FISSA ?!</h1>
 
 			<div id="spin" class="a">
 				<img width='1000px' src="rainbow.gif"></br>
